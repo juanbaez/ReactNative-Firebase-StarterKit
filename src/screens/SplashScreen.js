@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StatusBar} from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {imageBackgroundStyle} from '@styles/General';
+import {splashStyles} from '@styles/styles';
 
 export default class SplashScreen extends Component {
   goToScreen(routeName) {
@@ -20,7 +20,7 @@ export default class SplashScreen extends Component {
 
   render() {
     return (
-      <View style={imageBackgroundStyle.image}>
+      <View style={splashStyles.image}>
         <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
         <Animatable.Image
           animation="pulse"
