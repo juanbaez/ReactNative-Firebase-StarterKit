@@ -6,4 +6,6 @@ const app = Stitch.hasAppClient(APP_ID)
   ? Stitch.getAppClient(APP_ID)
   : Stitch.initializeAppClient(APP_ID);
 
+console.log(APP_ID);
+
 export {app};

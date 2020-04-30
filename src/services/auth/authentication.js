@@ -1,24 +1,24 @@
-import {AnonymousAuthProvider} from 'mongodb-stitch-react-native-sdk';
-import {app} from './app';
+import {AnonymousCredential} from 'mongodb-stitch-react-native-sdk';
+import {app} from './app.js';
 
 export function loginAnonymous() {
-  //permite login anonima
-  const credential = new AnonymousAuthProvider();
+  // Allow users to log in anonymously
+  const credential = new AnonymousCredential();
   return app.auth.loginWithCredential(credential);
 }
 
 export function hasLoggedInUser() {
-  //Verifica si existe algun usuario loggeado
+  // Check if there is currently a logged in user
   return app.auth.isLoggedIn;
 }
 
 export function getCurrentUser() {
-  //retorna el objeto del usuario que actualmente esta logeado
+  // Return the user object of the currently logged in user
   return app.auth.isLoggedIn ? app.auth.user : null;
 }
 
 export function logoutCurrentUser() {
-  //Des-logea al actual usuario
+  // Logout the currently logged in user
   const user = getCurrentUser();
   return app.auth.logoutUserWithId(user.id);
 }
