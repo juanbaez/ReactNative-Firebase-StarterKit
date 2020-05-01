@@ -1,39 +1,53 @@
-import React, {Component} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {View, StatusBar} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {splashStyles} from '@styles/styles';
+import {getUsuario} from '@storage/UsuarioAsyncStorage';
+import {UsuarioContext} from '@context/UsuarioContext';
 
-export default class SplashScreen extends Component {
-  goToScreen(routeName) {
-    this.props.navigation.navigate(routeName);
+export default function SplashScreen(props) {
+  const [login, loginAction] = useContext(UsuarioContext);
+
+  useEffect(() => {
+    fetchSesion(loginAction);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <View style={splashStyles.image}>
+      <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
+      <Animatable.Image
+        animation="pulse"
+        easing="ease-out"
+        iterationCount="infinite"
+        style={{
+          width: 200,
+          height: 200,
+          margin: 100,
+        }}
+        source={require('@resources/images/logo-latitud.png')}
+      />
+    </View>
+  );
+
+  async function fetchSesion(loginAction) {
+    const response = await getUsuario();
+    console.log(response);
+
+    if (response == null) {
+      setTimeout(() => {
+        goToScreen('Login');
+      }, 3000);
+      return;
+    }
+
+    loginAction({type: 'sing-in', data: response});
+    setTimeout(() => {
+      goToScreen('Principal');
+    }, 500);
   }
 
-  componentDidMount() {
-    setTimeout(
-      () => {
-        this.goToScreen('Login');
-      },
-      5000,
-      this,
-    );
-  }
-
-  render() {
-    return (
-      <View style={splashStyles.image}>
-        <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
-        <Animatable.Image
-          animation="pulse"
-          easing="ease-out"
-          iterationCount="infinite"
-          style={{
-            width: 200,
-            height: 200,
-            margin: 100,
-          }}
-          source={require('@resources/images/logo-latitud.png')}
-        />
-      </View>
-    );
+  function goToScreen(routeName) {
+    props.navigation.replace(routeName);
   }
 }

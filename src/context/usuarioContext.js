@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {createContext, useReducer} from 'react';
 import {saveUsuario, deleteUsuario} from '@storage/UsuarioAsyncStorage';
 import Snackbar from 'react-native-snackbar';
@@ -18,7 +19,8 @@ const usuarioReducer = (state = initialState, payload) => {
       console.log('bienvenidos al sistema');
       return {...state, usuario: payload.data, activo: true};
     case 'sing':
-      saveUsuario(payload.data).then(msg => {
+      // eslint-disable-next-line prettier/prettier
+      saveUsuario(payload.data).then((msg) => {
         console.log('usuario guardado');
       });
       Snackbar.show({
@@ -27,7 +29,7 @@ const usuarioReducer = (state = initialState, payload) => {
       });
       return {...state, usuario: payload.data, activo: true};
     case 'sing-out':
-      deleteUsuario().then(msg => {
+      deleteUsuario().then((msg) => {
         console.log(msg);
       });
       Snackbar.show({
