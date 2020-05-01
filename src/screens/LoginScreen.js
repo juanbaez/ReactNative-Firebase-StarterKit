@@ -1,19 +1,23 @@
 import React, {useState} from 'react';
 import {Text, View, TouchableOpacity, StatusBar, Image} from 'react-native';
-import {loginStyles} from '@styles/styles';
+import {mainStyles, loginStyles} from '@styles/styles';
 import MyTextInput from '@components/MyTextInput';
 import color from '@styles/colors';
 
-export default function LoginScreen() {
+function goToScreen(props, routeName) {
+  props.navigation.navigate(routeName);
+}
+
+export default function LoginScreen(props) {
   const [hidePassword, setHidePassword] = useState(false);
 
   return (
-    <View style={[loginStyles.container, {padding: 50}]}>
+    <View style={[mainStyles.container, {padding: 50}]}>
       <StatusBar backgroundColor={color.BLUE} translucent={true} />
       <View style={loginStyles.logo}>
         <Image
           source={require('@resources/images/logo-latitud.png')}
-          style={{height: 200, width: 200}}
+          style={{height: 250, width: 250}}
         />
       </View>
       <MyTextInput
@@ -29,26 +33,27 @@ export default function LoginScreen() {
         secureTextEntry={hidePassword}
         onPress={() => setHidePassword(!hidePassword)}
       />
-      <View style={loginStyles.btnMain}>
+      <View style={mainStyles.btnMain}>
         <TouchableOpacity>
-          <Text style={loginStyles.btntxt}>Iniciar Sesion</Text>
+          <Text style={mainStyles.btntxt}>Iniciar Sesión</Text>
         </TouchableOpacity>
       </View>
-      <View style={loginStyles.btnTransparent}>
+      <View style={mainStyles.btnTransparent}>
         <TouchableOpacity>
-          <Text style={[loginStyles.btntxt, {color: color.BLUE}]}>
+          <Text style={[mainStyles.btntxt, {color: color.BLUE}]}>
             Registrarse
           </Text>
         </TouchableOpacity>
       </View>
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => goToScreen(props, 'RecuperarPassword')}>
           <Text
             style={[
-              loginStyles.txtTransparent,
+              mainStyles.txtTransparent,
               {textDecorationLine: 'underline'},
             ]}>
-            Olvide mi Constraseña
+            Olvide mi Contraseña
           </Text>
         </TouchableOpacity>
       </View>

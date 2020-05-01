@@ -3,6 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import SplashScreen from '@screens/SplashScreen';
 import LoginScreen from '@screens/LoginScreen';
 import PrincipalScreen from '@screens/PrincipalScreen';
+import RecuperarPasswordScreen from '@screens/RecuperarPasswordScreen';
 
 const AppNavigation = createStackNavigator({
   Splash: {
@@ -20,6 +21,12 @@ const AppNavigation = createStackNavigator({
   },
   Principal: {
     screen: PrincipalScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  RecuperarPassword: {
+    screen: RecuperarPasswordScreen,
     navigationOptions: {
       headerShown: false,
     },
