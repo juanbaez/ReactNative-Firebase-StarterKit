@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Text, View, TouchableOpacity, StatusBar, Image} from 'react-native';
 import {mainStyles, loginStyles} from '@styles/styles';
 import MyTextInput from '@components/MyTextInput';
+import MyButton from '@components/MyButton';
 import color from '@styles/colors';
-
-function goToScreen(props, routeName) {
-  props.navigation.navigate(routeName);
-}
+import {UsuarioContext} from '@context/UsuarioContext';
 
 export default function LoginScreen(props) {
+  const [login, loginAction] = useContext(UsuarioContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(false);
 
   return (
@@ -24,6 +25,8 @@ export default function LoginScreen(props) {
         keyboardType="email-address"
         placeholder="E-mail"
         image="user"
+        value={email}
+        onChangeText={email => setEmail(email)}
       />
       <MyTextInput
         keyboardType={null}
@@ -32,19 +35,15 @@ export default function LoginScreen(props) {
         bolGone={true}
         secureTextEntry={hidePassword}
         onPress={() => setHidePassword(!hidePassword)}
+        value={password}
+        onChangeText={password => setPassword(password)}
       />
-      <View style={mainStyles.btnMain}>
-        <TouchableOpacity>
-          <Text style={mainStyles.btntxt}>Iniciar Sesión</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={mainStyles.btnTransparent}>
-        <TouchableOpacity onPress={() => goToScreen(props, 'Registro')}>
-          <Text style={[mainStyles.btntxt, {color: color.BLUE}]}>
-            Registrarse
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <MyButton titulo="Iniciar Sesion" onPress={() => iniciarSesion()} />
+      <MyButton
+        titulo="Registrarse"
+        onPress={() => goToScreen('Registro')}
+        transparent={true}
+      />
       <View>
         <TouchableOpacity
           onPress={() => goToScreen(props, 'RecuperarPassword')}>
@@ -59,4 +58,19 @@ export default function LoginScreen(props) {
       </View>
     </View>
   );
+
+  function iniciarSesion() {
+    loginAction({
+      type: 'sing',
+      data: {
+        email,
+        password,
+      },
+    });
+    goToScreen('Principal');
+  }
+
+  function goToScreen(routeName) {
+    props.navigation.navigate(routeName);
+  }
 }
