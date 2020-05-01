@@ -39,7 +39,7 @@ export default function LoginScreen(props) {
         </TouchableOpacity>
       </View>
       <View style={mainStyles.btnTransparent}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => goToScreen(props, 'Registro')}>
           <Text style={[mainStyles.btntxt, {color: color.BLUE}]}>
             Registrarse
           </Text>

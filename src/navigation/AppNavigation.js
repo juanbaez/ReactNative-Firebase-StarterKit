@@ -4,6 +4,7 @@ import SplashScreen from '@screens/SplashScreen';
 import LoginScreen from '@screens/LoginScreen';
 import PrincipalScreen from '@screens/PrincipalScreen';
 import RecuperarPasswordScreen from '@screens/RecuperarPasswordScreen';
+import RegistroScreen from '@screens/RegistroScreen';
 
 const AppNavigation = createStackNavigator({
   Splash: {
@@ -27,6 +28,12 @@ const AppNavigation = createStackNavigator({
   },
   RecuperarPassword: {
     screen: RecuperarPasswordScreen,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Registro: {
+    screen: RegistroScreen,
     navigationOptions: {
       headerShown: false,
     },
