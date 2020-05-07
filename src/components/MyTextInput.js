@@ -1,12 +1,12 @@
-import React from 'react';
-import {StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Icon, Input} from 'react-native-elements';
-import color from '@styles/colors';
+import React from 'react'
+import { StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { Icon, Input } from 'react-native-elements'
+import color from '@styles/colors'
 
 export default function MyTextInput(props) {
   return (
     <Input
-      style={{alignItems: 'center'}}
+      style={{ alignItems: 'center' }}
       containerStyle={{
         marginBottom: 20,
         borderBottomColor: color.LIGHTPRIMARYCOLOR,
@@ -22,7 +22,7 @@ export default function MyTextInput(props) {
       }}
       placeholderTextColor={color.LIGHTPRIMARYCOLOR}
       placeholder={props.placeholder}
-      leftIconContainerStyle={{marginLeft: 0}}
+      leftIconContainerStyle={{ marginLeft: 0 }}
       leftIcon={
         <Icon
           size={24}
@@ -48,15 +48,15 @@ export default function MyTextInput(props) {
             />
           </TouchableOpacity>
         ) : (
-          <Icon
-            size={24}
-            color={color.PRIMARYCOLOR}
-            type={'font-awesome'}
-            name={props.imageRight}
-          />
-        )
+            <Icon
+              size={24}
+              color={color.PRIMARYCOLOR}
+              type={'font-awesome'}
+              name={props.imageRight}
+            />
+          )
       }
-      errorStyle={{color: color.RED}}
+      errorStyle={{ color: color.RED }}
       errorMessage={props.bolError ? props.strError : ''}
       editable={props.editable}
       secureTextEntry={props.secureTextEntry}
@@ -64,7 +64,7 @@ export default function MyTextInput(props) {
       onChangeText={props.onChangeText}
       value={props.value}
     />
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-});
+})

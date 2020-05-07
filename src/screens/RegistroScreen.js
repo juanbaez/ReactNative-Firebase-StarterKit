@@ -1,36 +1,36 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import {
   Text,
   View,
   TouchableOpacity,
   StatusBar,
   ScrollView,
-} from 'react-native';
-import {mainStyles, registroStyles} from '@styles/styles';
-import MyTextInput from '@components/MyTextInput';
-import ToolBar from '@components/ToolBar';
-import color from '@styles/colors';
-import {CheckBox, SocialIcon, Button} from 'react-native-elements';
+} from 'react-native'
+import { mainStyles, registroStyles } from '@styles/styles'
+import MyTextInput from '@components/MyTextInput'
+import ToolBar from '@components/ToolBar'
+import color from '@styles/colors'
+import { CheckBox, SocialIcon, Button } from 'react-native-elements'
 
 function goToScreen(props, routeName) {
-  props.navigation.navigate(routeName);
+  props.navigation.navigate(routeName)
 }
 
 export default function RegistroScreen(props) {
-  const [hidePassword, setHidePassword] = useState(false);
+  const [hidePassword, setHidePassword] = useState(false)
 
   return (
     <ScrollView
       keyboardDismissMode="on-drag"
       keyboardShouldPersistTaps="always"
-      style={{backgroundColor: color.WHITE}}>
+      style={{ backgroundColor: color.WHITE }}>
       <StatusBar backgroundColor={color.BLUE} translucent={true} />
       <ToolBar
         titulo="Registrarse"
         onPressLeft={() => goToScreen(props, 'Login')}
         iconLeft={require('@resources/images/back.png')}
       />
-      <View style={[mainStyles.container, {padding: 50}]}>
+      <View style={[mainStyles.container, { padding: 50 }]}>
         <Text style={mainStyles.titleText}> Crea tu Cuenta</Text>
         <MyTextInput placeholder="Nombres" image="user" />
         <MyTextInput placeholder="Apellidos" image="user" />
@@ -50,7 +50,7 @@ export default function RegistroScreen(props) {
         />
         <CheckBox
           containerStyle={registroStyles.checkBox}
-          textStyle={{color: color.BLUE}}
+          textStyle={{ color: color.BLUE }}
           title="He leído y acepto los términos y condiciones"
           checked={false}
           checkedColor={color.BLUE}
@@ -60,8 +60,8 @@ export default function RegistroScreen(props) {
             <Text style={mainStyles.btntxt}>Registrarse</Text>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={{color: color.BLUE}}>¿Ya tienes una cuenta? </Text>
+        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ color: color.BLUE }}>¿Ya tienes una cuenta? </Text>
           <Button
             title="Inicia Sesión"
             onPress={() => goToScreen(props, 'Login')}
@@ -84,5 +84,5 @@ export default function RegistroScreen(props) {
         </View>
       </View>
     </ScrollView>
-  );
+  )
 }

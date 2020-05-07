@@ -1,17 +1,16 @@
-import React, {useContext, useEffect} from 'react';
-import {View, StatusBar} from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import {splashStyles} from '@styles/styles';
-import {getUsuario} from '@storage/UsuarioAsyncStorage';
-import {UsuarioContext} from '@context/UsuarioContext';
+import React, { useContext, useEffect } from 'react'
+import { View, StatusBar } from 'react-native'
+import * as Animatable from 'react-native-animatable'
+import { splashStyles } from '@styles/styles'
+import { getUsuario } from '@storage/UsuarioAsyncStorage'
+import { UsuarioContext } from '@context/UsuarioContext'
 
 export default function SplashScreen(props) {
-  const [login, loginAction] = useContext(UsuarioContext);
+  const [login, loginAction] = useContext(UsuarioContext)
 
   useEffect(() => {
-    fetchSesion(loginAction);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    fetchSesion(loginAction)
+  }, [])
 
   return (
     <View style={splashStyles.image}>
@@ -28,26 +27,26 @@ export default function SplashScreen(props) {
         source={require('@resources/images/logo-latitud.png')}
       />
     </View>
-  );
+  )
 
   async function fetchSesion(loginAction) {
-    const response = await getUsuario();
-    console.log(response);
+    const response = await getUsuario()
+    console.log(response)
 
     if (response == null) {
       setTimeout(() => {
-        goToScreen('Login');
-      }, 3000);
-      return;
+        goToScreen('Login')
+      }, 3000)
+      return
     }
 
-    loginAction({type: 'sing-in', data: response});
+    loginAction({ type: 'sing-in', data: response })
     setTimeout(() => {
-      goToScreen('Principal');
-    }, 500);
+      goToScreen('Principal')
+    }, 500)
   }
 
   function goToScreen(routeName) {
-    props.navigation.replace(routeName);
+    props.navigation.replace(routeName)
   }
 }

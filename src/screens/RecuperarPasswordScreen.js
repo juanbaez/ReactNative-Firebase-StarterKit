@@ -1,13 +1,13 @@
-import React from 'react';
-import {Text, View, TouchableOpacity, StatusBar} from 'react-native';
-import {mainStyles} from '@styles/styles';
-import MyTextInput from '@components/MyTextInput';
-import color from '@styles/colors';
-import {ScrollView} from 'react-native-gesture-handler';
-import ToolBar from '../components/ToolBar';
+import React from 'react'
+import { Text, View, TouchableOpacity, StatusBar } from 'react-native'
+import { mainStyles } from '@styles/styles'
+import MyTextInput from '@components/MyTextInput'
+import color from '@styles/colors'
+import { ScrollView } from 'react-native-gesture-handler'
+import ToolBar from '../components/ToolBar'
 
 function goToScreen(props, routeName) {
-  props.navigation.navigate(routeName);
+  props.navigation.navigate(routeName)
 }
 
 export default function RecuperarPasswordScreen(props) {
@@ -15,14 +15,14 @@ export default function RecuperarPasswordScreen(props) {
     <ScrollView
       keyboardDismissMode="on-drag"
       keyboardShouldPersistTaps="always"
-      style={{backgroundColor: color.WHITE}}>
+      style={{ backgroundColor: color.WHITE }}>
       <StatusBar backgroundColor={color.BLUE} translucent={true} />
       <ToolBar
         titulo="Contraseña"
         onPressLeft={() => goToScreen(props, 'Login')}
         iconLeft={require('@resources/images/back.png')}
       />
-      <View style={[mainStyles.container, {padding: 50}]}>
+      <View style={[mainStyles.container, { padding: 50 }]}>
         <Text style={mainStyles.titleText}>Recuperar{'\n'}Contraseña</Text>
         <MyTextInput
           keyboardType="email-address"
@@ -36,5 +36,5 @@ export default function RecuperarPasswordScreen(props) {
         </View>
       </View>
     </ScrollView>
-  );
+  )
 }

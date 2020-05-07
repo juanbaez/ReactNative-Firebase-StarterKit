@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import color from './colors';
+import { StyleSheet } from 'react-native'
+import color from './colors'
 
 //Estilos para MainScreen
 const mainStyles = StyleSheet.create({
@@ -53,7 +53,7 @@ const mainStyles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Poppins-Light',
   },
-});
+})
 
 //Estilos para SplashScreen
 const splashStyles = StyleSheet.create({
@@ -64,7 +64,7 @@ const splashStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.WHITE,
   },
-});
+})
 
 //Estilos para LoginScreen
 const loginStyles = StyleSheet.create({
@@ -72,7 +72,7 @@ const loginStyles = StyleSheet.create({
     paddingTop: 50,
     alignItems: 'center',
   },
-});
+})
 
 //Estilos para RegistroScreen
 const registroStyles = StyleSheet.create({
@@ -96,6 +96,6 @@ const registroStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 60,
   },
-});
+})
 
-export {mainStyles, splashStyles, loginStyles, registroStyles};
+export { mainStyles, splashStyles, loginStyles, registroStyles }

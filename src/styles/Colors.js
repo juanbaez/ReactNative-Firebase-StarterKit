@@ -15,4 +15,4 @@ export default {
   ORANGE: '#ff5204',
   YELLOW1: '#FBC02D',
   YELLOW2: '#FFEB3B',
-};
+}
