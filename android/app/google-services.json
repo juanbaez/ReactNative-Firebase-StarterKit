@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "159580727217",
+    "firebase_url": "https://vexpress-7ff43.firebaseio.com",
+    "project_id": "vexpress-7ff43",
+    "storage_bucket": "vexpress-7ff43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159580727217:android:0fd323d08f4bf8ca757f90",
+        "android_client_info": {
+          "package_name": "com.materiales_cbvcde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159580727217-ec0pkshbp9i6odg1ts9r15lrkn937t5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.materiales_cbvcde",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "159580727217-tn5slf821tq407f9e57lipoui8f7em45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATDUPKdzLzk4X1V2xzow7dqHyxSfHQlJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159580727217-tn5slf821tq407f9e57lipoui8f7em45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
