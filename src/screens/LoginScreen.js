@@ -31,6 +31,7 @@ export default function LoginScreen(props) {
     })
   }, [])
 
+
   return (
     <View style={[mainStyles.container, { padding: 50 }]}>
       <StatusBar backgroundColor={color.BLUE} translucent={true} />
@@ -67,7 +68,7 @@ export default function LoginScreen(props) {
         style={{ width: 192, height: 48 }}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        onPress={() => _googleSingIn()}
+        onPress={() => iniciarSesionGoogle()}
       />
       <View>
         <TouchableOpacity
@@ -84,27 +85,6 @@ export default function LoginScreen(props) {
     </View>
   )
 
-  async function _googleSingIn() {
-    try {
-      await GoogleSignin.hasPlayServices()
-      const userInfo = await GoogleSignin.signIn()
-      console.log(userInfo)
-      goToScreen('Principal')
-      //this.setState({ userInfo });
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
-      } else {
-        // some other error happened
-      }
-      console.log(error)
-    }
-  }
-
   function iniciarSesion() {
     loginAction({
       type: 'sing',
@@ -114,6 +94,10 @@ export default function LoginScreen(props) {
       },
     })
     goToScreen('Principal')
+  }
+
+  async function iniciarSesionGoogle() {
+    loginAction({ type: 'google-sing' })
   }
 
   function goToScreen(routeName) {
