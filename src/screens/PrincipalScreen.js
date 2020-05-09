@@ -40,7 +40,7 @@ export default function PrincipalScreen(props) {
           marginTop: 200,
           fontFamily: 'Poppins-Bold',
         }}>
-        Bienvenido{'\n' + login.userInfor.idToken}
+        Bienvenido{'\n' + login.usuario.email}
       </Text>
       <MyButton titulo="Cerrar Sesion" onPress={() => desconectarse()} />
     </View>
