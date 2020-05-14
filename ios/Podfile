@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'materiales_cbvcde' do
-  # Pods for materiales_cbvcde
+target 'ReactNativeStarterKit' do
+  # Pods for ReactNativeStarterKit
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -77,9 +77,7 @@ target 'materiales_cbvcde' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
-
-  target 'materiales_cbvcdeTests' do
+  target 'ReactNativeStarterKitTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -96,10 +94,10 @@ target 'materiales_cbvcde' do
   end
 end
 
-target 'materiales_cbvcde-tvOS' do
-  # Pods for materiales_cbvcde-tvOS
+target 'ReactNativeStarterKit-tvOS' do
+  # Pods for ReactNativeStarterKit-tvOS
 
-  target 'materiales_cbvcde-tvOSTests' do
+  target 'ReactNativeStarterKit-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
