@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class UpdateProfile extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    member: PropTypes.shape({}).isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-  };
-
-  state = {
-    error: null,
-    success: null,
-    loading: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      success: null,
+      loading: false,
+    };
   }
 
   onFormSubmit = (data) => {
@@ -25,7 +22,7 @@ class UpdateProfile extends Component {
         loading: false,
         success: 'Success - Updated',
         error: null,
-      })).catch(err => this.setState({
+      })).catch((err) => this.setState({
         loading: false,
         success: null,
         error: err,
@@ -48,12 +45,18 @@ class UpdateProfile extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   member: state.member || {},
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onFormSubmit: dispatch.member.updateProfile,
 });
+
+UpdateProfile.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  member: PropTypes.shape({}).isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);

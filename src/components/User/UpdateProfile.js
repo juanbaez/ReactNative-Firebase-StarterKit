@@ -8,23 +8,6 @@ import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 
 class UpdateProfile extends React.Component {
-  static propTypes = {
-    error: PropTypes.string,
-    success: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-    member: PropTypes.shape({
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      email: PropTypes.string,
-    }).isRequired,
-  }
-
-  static defaultProps = {
-    error: null,
-    success: null,
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +55,7 @@ class UpdateProfile extends React.Component {
               <Input
                 value={firstName}
                 disabled={loading}
-                onChangeText={v => this.handleChange('firstName', v)}
+                onChangeText={(v) => this.handleChange('firstName', v)}
               />
             </Item>
 
@@ -81,7 +64,7 @@ class UpdateProfile extends React.Component {
               <Input
                 value={lastName}
                 disabled={loading}
-                onChangeText={v => this.handleChange('lastName', v)}
+                onChangeText={(v) => this.handleChange('lastName', v)}
               />
             </Item>
 
@@ -103,7 +86,7 @@ class UpdateProfile extends React.Component {
                   value={email}
                   keyboardType="email-address"
                   disabled={loading}
-                  onChangeText={v => this.handleChange('email', v)}
+                  onChangeText={(v) => this.handleChange('email', v)}
                 />
               </Item>
             )}
@@ -124,7 +107,7 @@ class UpdateProfile extends React.Component {
                   <Label>Password</Label>
                   <Input
                     secureTextEntry
-                    onChangeText={v => this.handleChange('password', v)}
+                    onChangeText={(v) => this.handleChange('password', v)}
                     disabled={loading}
                   />
                 </Item>
@@ -133,7 +116,7 @@ class UpdateProfile extends React.Component {
                   <Label>Confirm Password</Label>
                   <Input
                     secureTextEntry
-                    onChangeText={v => this.handleChange('password2', v)}
+                    onChangeText={(v) => this.handleChange('password2', v)}
                     disabled={loading}
                   />
                 </Item>
@@ -151,5 +134,22 @@ class UpdateProfile extends React.Component {
     );
   }
 }
+
+UpdateProfile.propTypes = {
+  error: PropTypes.string,
+  success: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  member: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
+};
+
+UpdateProfile.defaultProps = {
+  error: null,
+  success: null,
+};
 
 export default UpdateProfile;

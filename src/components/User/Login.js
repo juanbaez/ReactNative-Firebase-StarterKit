@@ -9,22 +9,6 @@ import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 
 class Login extends React.Component {
-  static propTypes = {
-    member: PropTypes.shape({
-      email: PropTypes.string,
-    }),
-    error: PropTypes.string,
-    success: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    error: null,
-    success: null,
-    member: {},
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +54,7 @@ class Login extends React.Component {
                 value={email}
                 keyboardType="email-address"
                 disabled={loading}
-                onChangeText={v => this.handleChange('email', v)}
+                onChangeText={(v) => this.handleChange('email', v)}
               />
             </Item>
             <Item stackedLabel>
@@ -78,7 +62,7 @@ class Login extends React.Component {
               <Input
                 secureTextEntry
                 disabled={loading}
-                onChangeText={v => this.handleChange('password', v)}
+                onChangeText={(v) => this.handleChange('password', v)}
               />
             </Item>
 
@@ -95,5 +79,21 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  member: PropTypes.shape({
+    email: PropTypes.string,
+  }),
+  error: PropTypes.string,
+  success: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
+
+Login.defaultProps = {
+  error: null,
+  success: null,
+  member: {},
+};
 
 export default Login;

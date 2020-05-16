@@ -41,7 +41,7 @@ export default {
   /**
    * Effects/Actions
    */
-  effects: dispatch => ({
+  effects: (dispatch) => ({
     /**
      * Sign Up
      *
@@ -107,7 +107,7 @@ export default {
      * @returns {Promise}
      */
     getMemberData() {
-      if (Firebase === null) return new Promise(resolve => resolve);
+      if (Firebase === null) return new Promise((resolve) => resolve);
 
       // Ensure token is up to date
       return new Promise((resolve) => {

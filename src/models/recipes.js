@@ -24,7 +24,7 @@ export default {
       let recipes = [];
       // Pick out the props I need
       if (payload && typeof payload === 'object') {
-        recipes = payload.map(item => ({
+        recipes = payload.map((item) => ({
           id: item.id,
           title: item.title,
           body: item.body,
@@ -50,7 +50,7 @@ export default {
      * @return {Promise}
      */
     getMeals() {
-      if (Firebase === null) return () => new Promise(resolve => resolve());
+      if (Firebase === null) return () => new Promise((resolve) => resolve());
 
       return new Promise((resolve, reject) => FirebaseRef.child('meals').once('value')
         .then((snapshot) => {
@@ -66,9 +66,9 @@ export default {
      * @return {Promise}
       */
     getRecipes() {
-      if (Firebase === null) return () => new Promise(resolve => resolve());
+      if (Firebase === null) return () => new Promise((resolve) => resolve());
 
-      return new Promise(resolve => FirebaseRef.child('recipes')
+      return new Promise((resolve) => FirebaseRef.child('recipes')
         .on('value', (snapshot) => {
           const data = snapshot.val() || [];
           this.replaceRecipes(data);

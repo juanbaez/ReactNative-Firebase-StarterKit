@@ -3,22 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class RecipeListing extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    match: PropTypes.shape({ params: PropTypes.shape({}) }),
-    fetchRecipes: PropTypes.func.isRequired,
-    fetchMeals: PropTypes.func.isRequired,
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      loading: false,
+    };
   }
 
-  static defaultProps = {
-    match: null,
-  }
-
-  state = {
-    error: null,
-    loading: false,
-  }
 
   componentDidMount = () => this.fetchData();
 
@@ -32,7 +24,7 @@ class RecipeListing extends Component {
       .then(() => this.setState({
         loading: false,
         error: null,
-      })).catch(err => this.setState({
+      })).catch((err) => this.setState({
         loading: false,
         error: err,
       }));
@@ -55,13 +47,25 @@ class RecipeListing extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   recipes: state.recipes.recipes || {},
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchMeals: dispatch.recipes.getMeals,
   fetchRecipes: dispatch.recipes.getRecipes,
 });
+
+RecipeListing.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  match: PropTypes.shape({ params: PropTypes.shape({}) }),
+  fetchRecipes: PropTypes.func.isRequired,
+  fetchMeals: PropTypes.func.isRequired,
+};
+
+RecipeListing.defaultProps = {
+  match: null,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeListing);

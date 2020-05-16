@@ -9,22 +9,6 @@ import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 
 class ForgotPassword extends React.Component {
-  static propTypes = {
-    member: PropTypes.shape({
-      email: PropTypes.string,
-    }),
-    error: PropTypes.string,
-    success: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    success: null,
-    error: null,
-    member: {},
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +52,7 @@ class ForgotPassword extends React.Component {
                 value={email}
                 disabled={loading}
                 keyboardType="email-address"
-                onChangeText={v => this.handleChange('email', v)}
+                onChangeText={(v) => this.handleChange('email', v)}
               />
             </Item>
 
@@ -83,5 +67,21 @@ class ForgotPassword extends React.Component {
     );
   }
 }
+
+ForgotPassword.propTypes = {
+  member: PropTypes.shape({
+    email: PropTypes.string,
+  }),
+  error: PropTypes.string,
+  success: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
+
+ForgotPassword.defaultProps = {
+  success: null,
+  error: null,
+  member: {},
+};
 
 export default ForgotPassword;

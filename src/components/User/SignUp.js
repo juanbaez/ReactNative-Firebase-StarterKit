@@ -9,29 +9,15 @@ import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 
 class SignUp extends React.Component {
-  static propTypes = {
-    success: PropTypes.string,
-    error: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    error: null,
-    success: null,
-  }
-
-  state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    password2: '',
-  }
-
   constructor(props) {
     super(props);
-
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      password2: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -53,7 +39,7 @@ class SignUp extends React.Component {
         <Content padder>
           <Header
             title="Welcome"
-            content="We're glad to welcome you to the community. There's only a few questions and you'll be on your way."
+            content="Welcome. There's only a few questions and you'll be on your way."
           />
 
           {error && <Messages message={error} />}
@@ -64,7 +50,7 @@ class SignUp extends React.Component {
               <Label>First Name</Label>
               <Input
                 disabled={loading}
-                onChangeText={v => this.handleChange('firstName', v)}
+                onChangeText={(v) => this.handleChange('firstName', v)}
               />
             </Item>
 
@@ -72,7 +58,7 @@ class SignUp extends React.Component {
               <Label>Last Name</Label>
               <Input
                 disabled={loading}
-                onChangeText={v => this.handleChange('lastName', v)}
+                onChangeText={(v) => this.handleChange('lastName', v)}
               />
             </Item>
 
@@ -82,7 +68,7 @@ class SignUp extends React.Component {
                 disabled={loading}
                 autoCapitalize="none"
                 keyboardType="email-address"
-                onChangeText={v => this.handleChange('email', v)}
+                onChangeText={(v) => this.handleChange('email', v)}
               />
             </Item>
 
@@ -91,7 +77,7 @@ class SignUp extends React.Component {
               <Input
                 disabled={loading}
                 secureTextEntry
-                onChangeText={v => this.handleChange('password', v)}
+                onChangeText={(v) => this.handleChange('password', v)}
               />
             </Item>
 
@@ -100,7 +86,7 @@ class SignUp extends React.Component {
               <Input
                 disabled={loading}
                 secureTextEntry
-                onChangeText={v => this.handleChange('password2', v)}
+                onChangeText={(v) => this.handleChange('password2', v)}
               />
             </Item>
 
@@ -115,5 +101,17 @@ class SignUp extends React.Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  success: PropTypes.string,
+  error: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
+
+SignUp.defaultProps = {
+  error: null,
+  success: null,
+};
 
 export default SignUp;

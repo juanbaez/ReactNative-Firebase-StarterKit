@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class ForgotPassword extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    member: PropTypes.shape({}).isRequired,
-    onFormSubmit: PropTypes.func.isRequired,
-  }
-
-  state = {
-    error: null,
-    success: null,
-    loading: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      success: null,
+      loading: false,
+    };
   }
 
   onFormSubmit = (data) => {
@@ -51,12 +48,18 @@ class ForgotPassword extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   member: state.member || {},
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onFormSubmit: dispatch.member.resetPassword,
 });
+
+ForgotPassword.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  member: PropTypes.shape({}).isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);

@@ -83,15 +83,17 @@ const Profile = ({ member, logout }) => (
                 </Body>
               </ListItem>
             </View>
-          )
-        }
+          )}
       </List>
     </Content>
   </Container>
 );
 
 Profile.propTypes = {
-  member: PropTypes.shape({}),
+  member: PropTypes.shape({
+    email: PropTypes.string,
+    firstName: PropTypes.string,
+  }),
   logout: PropTypes.func.isRequired,
 };
 

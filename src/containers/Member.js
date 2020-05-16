@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Member extends Component {
-  static propTypes = {
-    Layout: PropTypes.func.isRequired,
-    memberLogout: PropTypes.func.isRequired,
-    fetchMember: PropTypes.func.isRequired,
-    member: PropTypes.shape({}).isRequired,
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      loading: false,
+    };
   }
 
-  state = {
-    error: null,
-    loading: false,
-  }
 
   componentDidMount = () => this.fetchData();
 
@@ -26,7 +23,7 @@ class Member extends Component {
       .then(() => this.setState({
         loading: false,
         error: null,
-      })).catch(err => this.setState({
+      })).catch((err) => this.setState({
         loading: false,
         error: err,
       }));
@@ -48,13 +45,20 @@ class Member extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   member: state.member || {},
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   memberLogout: dispatch.member.logout,
   fetchMember: dispatch.member.getMemberData,
 });
+
+Member.propTypes = {
+  Layout: PropTypes.func.isRequired,
+  memberLogout: PropTypes.func.isRequired,
+  fetchMember: PropTypes.func.isRequired,
+  member: PropTypes.shape({}).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Member);
