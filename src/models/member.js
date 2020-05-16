@@ -53,7 +53,7 @@ export default {
         email, password, password2, firstName, lastName,
       } = formData;
 
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         // Validation rules
         if (!firstName) return reject({ message: errorMessages.missingFirstName });
         if (!lastName) return reject({ message: errorMessages.missingLastName });
@@ -131,7 +131,7 @@ export default {
     login(formData) {
       const { email, password } = formData;
 
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         // Validation rules
         if (!email || email.length === 0) return reject({ message: errorMessages.missingEmail });
         if (!password || password.length === 0) {
@@ -177,7 +177,7 @@ export default {
     resetPassword(formData) {
       const { email } = formData;
 
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         // Validation rules
         if (!email) return reject({ message: errorMessages.missingEmail });
 
@@ -201,9 +201,13 @@ export default {
         email, password, password2, firstName, lastName, changeEmail, changePassword,
       } = formData;
 
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         // Are they a user?
-        const UID = await Firebase.auth().currentUser.uid;
+        // TODO:
+        // Se quita el await en la siguiente linea, por la siguiente
+        // recomendacion del ESLint
+        // disallow using an async function as a Promise executor (no-async-promise-executor)
+        const UID = Firebase.auth().currentUser.uid;
         if (!UID) return reject({ message: errorMessages.memberNotAuthd });
 
         // Validation rules

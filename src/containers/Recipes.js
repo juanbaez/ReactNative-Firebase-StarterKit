@@ -59,7 +59,9 @@ const mapDispatchToProps = (dispatch) => ({
 RecipeListing.propTypes = {
   Layout: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  match: PropTypes.shape({ params: PropTypes.shape({}) }),
+  // TODO:
+  // verificar tipo de proptype de id
+  match: PropTypes.shape({ params: PropTypes.shape({ id: PropTypes.string }) }),
   fetchRecipes: PropTypes.func.isRequired,
   fetchMeals: PropTypes.func.isRequired,
 };

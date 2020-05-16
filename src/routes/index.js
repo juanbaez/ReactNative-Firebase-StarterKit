@@ -4,7 +4,7 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../constants/config';
 
-import { ArticlesForm, ArticlesList, ArticlesSingle } from '../containers';
+import { ArticlesList, ArticlesSingle } from '../containers';
 
 import SignUpContainer from '../containers/SignUp';
 import SignUpComponent from '../components/User/SignUp';
