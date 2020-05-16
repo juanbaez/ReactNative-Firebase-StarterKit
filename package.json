@@ -1,11 +1,12 @@
 {
-  "name": "ReactNativeStarterKit",
+  "name": "rnfsk",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "rename": "node ./bin/rename.js",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -47,7 +48,8 @@
     "eslint-plugin-react": "^7.20.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.58.0",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "16.11.0",
+    "replace-in-file": "^6.0.0"
   },
   "jest": {
     "preset": "@testing-library/react-native",

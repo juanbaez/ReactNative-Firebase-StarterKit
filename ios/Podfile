@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'ReactNativeStarterKit' do
-  # Pods for ReactNativeStarterKit
+target 'rnfsk' do
+  # Pods for rnfsk
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'ReactNativeStarterKit' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'ReactNativeStarterKitTests' do
+  target 'rnfskTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'ReactNativeStarterKit' do
   use_native_modules!
 end
 
-target 'ReactNativeStarterKit-tvOS' do
-  # Pods for ReactNativeStarterKit-tvOS
+target 'rnfsk-tvOS' do
+  # Pods for rnfsk-tvOS
 
-  target 'ReactNativeStarterKit-tvOSTests' do
+  target 'rnfsk-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

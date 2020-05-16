@@ -1,4 +1,4 @@
-package com.reactnativestarterkit;
+package com.latitud.rnfsk;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
@@ -18,11 +18,11 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "ReactNativeStarterKit";
+    return "rnfsk";
   }
 }
 
-// package com.reactnativestarterkit;
+// package com.latitud.rnfsk;
 
 // import com.facebook.react.ReactActivity;
 
@@ -34,6 +34,6 @@ public class MainActivity extends ReactActivity {
 //    */
 //   @Override
 //   protected String getMainComponentName() {
-//     return "ReactNativeStarterKit";
+//     return "rnfsk";
 //   }
 // }
