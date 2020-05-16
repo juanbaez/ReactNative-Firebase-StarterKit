@@ -1,8 +1,8 @@
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fmcnamee%2Freact-native-starter-kit%2Fbadge%3Fref%3Dmaster&style=flat)](https://github.com/mcnamee/react-native-starter-kit/actions)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fmcnamee%2Freact-native-starter-kit%2Fbadge%3Fref%3Dmaster&style=flat)](https://github.com/juanbaez/react-native-starter-kit/actions)![Master test](https://github.com/juanbaez/vexpress/workflows/Test/badge.svg?branch=master)![Develop test](https://github.com/juanbaez/vexpress/workflows/Test/badge.svg?branch=develop)
 
 ---
 
-# React Native App
+# React Native + Firebase starter
 ---
 
 ## 🚀 Getting Started
@@ -36,7 +36,6 @@ npx react-native run-android
 
 ## 📖 Docs
 
-- [Contributing to this project](documentation/contributing.md)
 - [FAQs & Opinions](documentation/faqs.md)
 - [Tests & testing](documentation/testing.md)
 - [Understanding the file structure](documentation/file-structure.md)
