@@ -142,32 +142,31 @@ export default {
         }
 
         // Go to Firebase
-        return auth().setPersistence(auth.Auth.Persistence.LOCAL)
-          .then(() => auth().signInWithEmailAndPassword(email, password)
-            .then(async (res) => {
-              const userDetails = res && res.user ? res.user : null;
+        return auth().signInWithEmailAndPassword(email, password)
+          .then(async (res) => {
+            const userDetails = res && res.user ? res.user : null;
 
-              // Save the user's login data (email, UID)
-              this.setUserLogin(userDetails);
+            // Save the user's login data (email, UID)
+            this.setUserLogin(userDetails);
 
-              // Update last logged in data
-              if (userDetails.uid) {
-                FirebaseRef.child(`users/${userDetails.uid}`).update({
-                  lastLoggedIn: database.ServerValue.TIMESTAMP,
-                });
+            // Update last logged in data
+            if (userDetails.uid) {
+              FirebaseRef.child(`users/${userDetails.uid}`).update({
+                lastLoggedIn: database.ServerValue.TIMESTAMP,
+              });
 
-                // Send verification Email when email hasn't been verified
-                if (userDetails.emailVerified === false) {
-                  auth().currentUser.sendEmailVerification()
-                    .catch(() => console.log('Verification email failed to send'));
-                }
-
-                // Get/Save User Profile (name, signed up date etc)
-                this.listenForMemberProfileUpdates(dispatch);
+              // Send verification Email when email hasn't been verified
+              if (userDetails.emailVerified === false) {
+                auth().currentUser.sendEmailVerification()
+                  .catch(() => console.log('Verification email failed to send'));
               }
 
-              return resolve();
-            }).catch(reject));
+              // Get/Save User Profile (name, signed up date etc)
+              this.listenForMemberProfileUpdates(dispatch);
+            }
+
+            return resolve();
+          }).catch(reject);
       }).catch((err) => { throw err.message; });
     },
 
