@@ -1,5 +1,8 @@
+import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
 import { errorMessages } from '../constants/messages';
-import { Firebase, FirebaseRef } from '../lib/firebase';
+
+const FirebaseRef = database().ref();
 
 export default {
   state: {}, // initial state
@@ -63,15 +66,15 @@ export default {
         if (password !== password2) return reject({ message: errorMessages.passwordsDontMatch });
 
         // Go to Firebase
-        return Firebase.auth().createUserWithEmailAndPassword(email, password)
+        return auth().createUserWithEmailAndPassword(email, password)
           .then((res) => {
             // Send user details to Firebase database
             if (res && res.user.uid) {
               FirebaseRef.child(`users/${res.user.uid}`).set({
                 firstName,
                 lastName,
-                signedUp: Firebase.database.ServerValue.TIMESTAMP,
-                lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
+                signedUp: database.ServerValue.TIMESTAMP,
+                lastLoggedIn: database.ServerValue.TIMESTAMP,
               }).then(resolve);
             }
           }).catch(reject);
@@ -84,11 +87,11 @@ export default {
     listenForMemberProfileUpdates() {
       const UID = (
         FirebaseRef
-        && Firebase
-        && Firebase.auth()
-        && Firebase.auth().currentUser
-        && Firebase.auth().currentUser.uid
-      ) ? Firebase.auth().currentUser.uid : null;
+        // && Firebase
+        && auth()
+        && auth().currentUser
+        && auth().currentUser.uid
+      ) ? auth().currentUser.uid : null;
 
       if (!UID) return false;
 
@@ -107,11 +110,11 @@ export default {
      * @returns {Promise}
      */
     getMemberData() {
-      if (Firebase === null) return new Promise((resolve) => resolve);
+      if (auth === null) return new Promise((resolve) => resolve);
 
       // Ensure token is up to date
       return new Promise((resolve) => {
-        Firebase.auth().onAuthStateChanged((loggedIn) => {
+        auth().onAuthStateChanged((loggedIn) => {
           if (loggedIn) {
             this.listenForMemberProfileUpdates(dispatch);
             return resolve();
@@ -139,8 +142,8 @@ export default {
         }
 
         // Go to Firebase
-        return Firebase.auth().setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
-          .then(() => Firebase.auth().signInWithEmailAndPassword(email, password)
+        return auth().setPersistence(auth.Auth.Persistence.LOCAL)
+          .then(() => auth().signInWithEmailAndPassword(email, password)
             .then(async (res) => {
               const userDetails = res && res.user ? res.user : null;
 
@@ -150,12 +153,12 @@ export default {
               // Update last logged in data
               if (userDetails.uid) {
                 FirebaseRef.child(`users/${userDetails.uid}`).update({
-                  lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
+                  lastLoggedIn: database.ServerValue.TIMESTAMP,
                 });
 
                 // Send verification Email when email hasn't been verified
                 if (userDetails.emailVerified === false) {
-                  Firebase.auth().currentUser.sendEmailVerification()
+                  auth().currentUser.sendEmailVerification()
                     .catch(() => console.log('Verification email failed to send'));
                 }
 
@@ -182,7 +185,7 @@ export default {
         if (!email) return reject({ message: errorMessages.missingEmail });
 
         // Go to Firebase
-        return Firebase.auth().sendPasswordResetEmail(email)
+        return auth().sendPasswordResetEmail(email)
           .then(() => {
             this.resetUser();
             resolve();
@@ -207,7 +210,7 @@ export default {
         // Se quita el await en la siguiente linea, por la siguiente
         // recomendacion del ESLint
         // disallow using an async function as a Promise executor (no-async-promise-executor)
-        const UID = Firebase.auth().currentUser.uid;
+        const UID = auth().currentUser.uid;
         if (!UID) return reject({ message: errorMessages.memberNotAuthd });
 
         // Validation rules
@@ -227,12 +230,12 @@ export default {
           .then(async () => {
             // Update Email address
             if (changeEmail) {
-              await Firebase.auth().currentUser.updateEmail(email).catch(reject);
+              await auth().currentUser.updateEmail(email).catch(reject);
             }
 
             // Change the Password
             if (changePassword) {
-              await Firebase.auth().currentUser.updatePassword(password).catch(reject);
+              await auth().currentUser.updatePassword(password).catch(reject);
             }
 
             return resolve();
@@ -246,7 +249,7 @@ export default {
      * @returns {Promise}
      */
     logout() {
-      return new Promise((resolve, reject) => Firebase.auth().signOut()
+      return new Promise((resolve, reject) => auth().signOut()
         .then(() => {
           this.resetUser();
           resolve();
