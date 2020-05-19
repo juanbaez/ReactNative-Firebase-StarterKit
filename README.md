@@ -36,8 +36,7 @@ npx react-native run-android
 ## 📖 Docs
 
 - [FAQs & Opinions](documentation/faqs.md)
-- [Tests & testing](documentation/testing.md)
-- [Understanding the file structure](documentation/file-structure.md)
+- [File structure](documentation/file-structure.md)
 - [Deploy the app](documentation/deploy.md)
 
 ---

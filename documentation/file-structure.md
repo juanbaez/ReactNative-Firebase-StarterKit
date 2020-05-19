@@ -1,8 +1,10 @@
 ## File structure
 
 - `/android` - contains native code specific to the Android OS
+- `/bin` - contain the rename project file configuration
 - `/documentation` - as the name suggests - any docs
 - `/fastlane` - configuration for auto-deploying the app to the app stores via Fastlane
+- `/firebase` - contains the Firebase Cloud Functions
 - `/ios` - native code specific to iOS
 - `/native-base-theme` - the app uses Native Base for base elements. You can edit the styles in here
 - `/src` - contains our JS and CSS code. `index.js` is the entry-point for our file, and is mandatory.
