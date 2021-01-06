@@ -18,7 +18,7 @@
     "@rematch/core": "^1.4.0",
     "@rematch/loading": "^1.2.1",
     "@rematch/persist": "^1.1.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "firebase": "^7.14.3",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.25.3",
