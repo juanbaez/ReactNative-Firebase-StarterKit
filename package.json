@@ -21,7 +21,7 @@
     "axios": "^0.19.2",
     "firebase": "^7.14.3",
     "jsonwebtoken": "^8.5.1",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
     "react": "16.11.0",
